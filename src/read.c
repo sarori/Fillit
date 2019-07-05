@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-void read_file(int fd)
+void read_file(int fd, t_tet **head)
 {
 	int		cnt;
 	char	*line = NULL;
@@ -15,28 +15,23 @@ void read_file(int fd)
 		if (cnt == 5 && ft_strlen(input) == 16)
 		{
 			cnt = 0;
-			free(line);
-			line = NULL;
-			tet = transform_character(input);
-			while (tet && ft_strlen(tet) < 16)
-				ft_strcat(tet, ".");
-			validate_tetriminoes(input);
-			two_dprint(tet);
+			// ft_memset(input, '\0', 17);
+			tet = validate_tetriminoes(input);
+			insertNode(head, tet);
+			// two_dprint(tet);
 			ft_memset(input, '\0', 17);
+			
 		}
-	}
-	if (cnt == 4 && ft_strlen(input) == 16) //마지막이라는것의 조건 더 달아야함.
-	{
 		free(line);
 		line = NULL;
-		tet = transform_character(input);
-		while (ft_strlen(tet) < 16)
-			ft_strcat(tet, ".");
-		validate_tetriminoes(input);
-		two_dprint(tet);
+	}
+	if (cnt == 4 && ft_strlen(input) == 16)
+	{
+        tet = validate_tetriminoes(input);
+		insertNode(head, tet);
+		// two_dprint(tet);
 		ft_memset(input, '\0', 17);
 	}
-	// if (cnt != 4 || ft_strlen(input) != 16)
 	else
 	{
 		write(1, "error\n", 6);

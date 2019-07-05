@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:17:06 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/01 01:11:23 by sapark           ###   ########.fr       */
+/*   Updated: 2019/07/04 17:51:18 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,15 +144,27 @@ void read_file(int fd)
 		write(1, "error\n", 6);
 		exit(0);
 	}
-}
+
 */
 
 int main(int argc, char **argv)
 {
+	t_tet	*head;
+
+	head = NULL;
 	if (argc != 2)
 		return (0);
 	int		fd = open(argv[1], O_RDONLY);
-	read_file(fd);
+	read_file(fd, &head);
+	
+	while (head)
+	{
+		printf("[width] : %d\n", head->width);
+		printf("[height] : %d\n", head->height);
+		printf("[input] : %s\n", head->input);
+		printf("\n");
+		head = head->next;
+	}
 	return (0);
 }
 
