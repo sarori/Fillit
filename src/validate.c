@@ -17,10 +17,8 @@ void		check_condition(char *input)
 			dotcnt++;
 	}
 	if 	(hashcnt != 4 || dotcnt != 12)
-	{
-		write(1, "error\n", 6);
-		exit(0);
-	}
+		print_error();
+		
 }
 
 int		binary_conversion(char *input)
@@ -41,16 +39,16 @@ int		binary_conversion(char *input)
 		power = power * 2;
 		len--;
 	}
-	printf("sum : %d\n", sum);
+	// printf("sum : %d\n", sum);
 	return (sum);
 }
 
 /*반환형 뭘로 할지 */
 char	*validate_tetriminoes(char *input)
 {
-	int	i;
-	int	sum;
-	char	*tet = NULL;
+	int			i;
+	int			sum;
+	char		*tet;
 	static int valid_input[19] = {34952, 61440, 52224, 35008, 11776, 50240,
 							19968, 19520, 35968, 58368, 50688, 19584, 27648,
 							35904, 17600, 57856, 51328, 36352, 59392};

@@ -1,11 +1,17 @@
 #include "fillit.h"
 
-void read_file(int fd, t_tet **head)
+void	print_error(void)
+{
+	write(1, "error\n", 6);
+	exit(0);
+}
+
+void	read_file(int fd, t_tet **head)
 {
 	int		cnt;
-	char	*line = NULL;
+	char	*line;
 	char	input[17] = {0};
-	char	*tet = NULL;
+	char	*tet;
 
 	cnt = 0;
 	while (get_next_line(fd, &line) > 0)
@@ -15,12 +21,10 @@ void read_file(int fd, t_tet **head)
 		if (cnt == 5 && ft_strlen(input) == 16)
 		{
 			cnt = 0;
-			// ft_memset(input, '\0', 17);
 			tet = validate_tetriminoes(input);
 			insertNode(head, tet);
-			// two_dprint(tet);
+			//two_dprint(tet);
 			ft_memset(input, '\0', 17);
-			
 		}
 		free(line);
 		line = NULL;
@@ -29,12 +33,9 @@ void read_file(int fd, t_tet **head)
 	{
         tet = validate_tetriminoes(input);
 		insertNode(head, tet);
-		// two_dprint(tet);
+		//two_dprint(tet);
 		ft_memset(input, '\0', 17);
 	}
 	else
-	{
-		write(1, "error\n", 6);
-		exit(0);
-	}
+		print_error();
 }

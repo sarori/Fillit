@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 21:30:51 by sapark            #+#    #+#             */
-/*   Updated: 2019/06/26 16:48:26 by sapark           ###   ########.fr       */
+/*   Updated: 2019/07/07 23:30:35 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int					ft_number_length(int n);
 int					ft_abs(int num);
 void				ft_bubble_sort(int arr[], int count);
 int					ft_strchr_idx(const char *s, char c);
+int     			maximum(int *arr, int size);
+int     			minimum(int *arr, int size);
 
 int					get_next_line(const int fd, char **line);
 #endif
