@@ -39,7 +39,7 @@ int     calculate_size(t_tet **tetriminoes)
 			hei_max = tmp->height;
         tmp = tmp->next;
 	}
-    size = (hei_max >= wid_max ? hei_max : wid_max);
+    (*tetriminoes)->size = (hei_max >= wid_max ? hei_max : wid_max);
 	return (hei_max >= wid_max ? hei_max : wid_max);
 }
 

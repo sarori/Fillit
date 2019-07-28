@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 14:40:07 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/23 17:41:55 by sapark           ###   ########.fr       */
+/*   Updated: 2019/07/27 23:23:31 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 void    insertNode(t_tet **target, char *input)
-{   
+{
 	t_tet   		*newNode;
     t_tet   		*tmp;
 	static int 		i = 0;
-	
+
     newNode = (t_tet *)malloc(sizeof(t_tet));
     tmp = (*target);
 

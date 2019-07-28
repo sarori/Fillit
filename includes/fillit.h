@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/26 19:04:40 by sapark           ###   ########.fr       */
+/*   Updated: 2019/07/27 23:37:58 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "libft.h"
 
 # include <fcntl.h>         /* open -> O_WRONLY */
-# include <unistd.h>        /* write(), read(), close()*/ 
+# include <unistd.h>        /* write(), read(), close()*/
 # include <stdlib.h>		//melloc
 
 //
@@ -59,7 +59,7 @@ void    			alpha(char *input, int num);
 void				store_data(char *input);
 void				insertNode(t_tet **target, char *input);
 void				squareboard(t_tet **tetriminoes);
-int     			calculate_size(t_tet **tetriminoes);
+int	     			calculate_size(t_tet **tetriminoes);
 
 int					calculate_length(char *input);
 //void				place_piece(t_tet **tetriminoes, char *board);
@@ -83,18 +83,24 @@ int     			count_height(char *input, int size);
 int					count_hash(char *input);
 // char				*move_piece(t_tet *tmp, int size, int cnt);
 void				enlarge_board(t_tet **tetriminoes, int size);
-void				revert_board(char *board, t_tet *tmp, int index);
+void	revert_board(char *board, t_tet *tet);
 
 /* =================================================================================== */
 
 
 char    			*sort_input_cases(t_tet **tetriminoes);
 void    			change_input_shape(t_tet **tetriminoes);
-int					put_piece(t_tet **tetriminoes, char *board);
+// int					put_piece(t_tet **tetriminoes, char *board);
+// int					put_piece(t_tet *tet, char *board);
 
-int					check_position(char *piece, char *board, int call);
+// int					check_position(char *piece, char *board, int call);
 char    			*trim_edge(char *input, int size);
-char				*move_piece(t_tet *tmp);
+// char				*move_piece(t_tet *tmp);
 char    			*create_board(int size);
+
+char	*put_piece(char *piece, char *board);
+int		fillit(t_tet *tet, char *board);
+char	*move_piece(t_tet *tmp, int size, int cnt);
+int		check_position(char *piece, char *board, int idx);
 
 #endif

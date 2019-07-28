@@ -66,7 +66,7 @@
 // 			printf("first\n");
 // 			tmp->mc = 0;
 // 			revert_board(board, tmp, tmp->idx);
-			
+
 // 			place_piece(tetriminoes, board, size);
 // 		}
 // 		printf("\n");
@@ -111,7 +111,7 @@
 // 	tmp = ft_strdup(dst);
 // 	len = ft_strlen(dst);
 // 	i = 0;
-	
+
 // 	if (!dst)
 // 		return (NULL);
 // 	while(i < move_cnt)
@@ -137,7 +137,7 @@ int		count_hash(char *input)
 	if (hashcnt == 4)
 		return(hashcnt);
 	return(0);
-		
+
 }
 
 // char	*move_piece(t_tet *tmp, int size, int cnt)
