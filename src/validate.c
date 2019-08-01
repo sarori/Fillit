@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 02:20:17 by sapark            #+#    #+#             */
+/*   Updated: 2019/07/29 02:25:49 by sapark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-void		check_condition(char *input)
+void	check_condition(char *input)
 {
 	int		i;
 	int		hashcnt;
@@ -18,7 +30,6 @@ void		check_condition(char *input)
 	}
 	if 	(hashcnt != 4 || dotcnt != 12)
 		print_error();
-		
 }
 
 int		binary_conversion(char *input)
@@ -39,7 +50,6 @@ int		binary_conversion(char *input)
 		power = power * 2;
 		len--;
 	}
-	// printf("sum : %d\n", sum);
 	return (sum);
 }
 
@@ -61,7 +71,7 @@ char	*validate_tetriminoes(char *input)
 	while (i < 19)
 	{
 		if (valid_input[i] == sum)
-            return (tet);
+			return (tet);
 		i++;
 	}
 	write(1, "error\n", 6);

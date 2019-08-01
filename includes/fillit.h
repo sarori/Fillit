@@ -6,17 +6,17 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/26 19:04:40 by sapark           ###   ########.fr       */
+/*   Updated: 2019/07/31 00:58:05 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FILLIT_H
+#ifndef FILLIT_H
 # define FILLIT_H
 # include "libft.h"
 
-# include <fcntl.h>         /* open -> O_WRONLY */
-# include <unistd.h>        /* write(), read(), close()*/ 
-# include <stdlib.h>		//melloc
+# include <fcntl.h>/* open -> O_WRONLY */
+# include <unistd.h>/* write(), read(), close()*/ 
+# include <stdlib.h>/*malloc */
 
 //
 #include <stdio.h>
@@ -24,13 +24,13 @@
 # define DEFAULT_SIZE 4
 # define SPECIAL_CASE "AA\nAA"
 # define YES 1
-# define NO	2
+# define NO	0
 
 typedef struct		s_tet
 {
 	char			*input;
-	char			*left;	/*piece의 모양 기억할 변수 */
-	char			*tmp_piece;	/*이동할 변수 */
+	char			*left;/*piece의 모양 기억할 변수 */
+	char			*tmp_piece;/*이동할 변수 */
 
 	int				size;
 	int				width;
@@ -53,8 +53,6 @@ void 				read_file(int fd, t_tet **head);
 void				print_error(void);
 
 
-int     			calculate_width(char *input);
-int    				calculate_height(char *input);
 void    			alpha(char *input, int num);
 void				store_data(char *input);
 void				insertNode(t_tet **target, char *input);
@@ -68,33 +66,39 @@ int					print_tetriminoes(char *board, int	size);
 int					count_piece(t_tet **tetriminoes);
 void				general_case(t_tet **tetriminoes, char *board, int size);
 
-
-// void				sort_cases(t_tet **tetriminoes, char *board, int size);
-
-// char				*move_piece(t_tet **tetriminoes, int size, int move_cnt);
-// char				*move_piece(char *left, char *tmp_piece, int size, int pmc);
-// void				place_piece(t_tet **tetriminoes, char *board, int size);
-
 void				possible_mc(t_tet **tetriminoes, int size);
 char				*ft_countmove(char *dst, int move_cnt);
 
 int     			count_width(char *input, int size);
 int     			count_height(char *input, int size);
 int					count_hash(char *input);
-// char				*move_piece(t_tet *tmp, int size, int cnt);
 void				enlarge_board(t_tet **tetriminoes, int size);
-void				revert_board(char *board, t_tet *tmp, int index);
+
+
 
 /* =================================================================================== */
 
+char				*sort_input_cases(t_tet **tetriminoes, int size);
+int					fillit(t_tet *tet, char *board, int size);
+void    			change_input_shape(t_tet **tetriminoes, int size);
 
-char    			*sort_input_cases(t_tet **tetriminoes);
-void    			change_input_shape(t_tet **tetriminoes);
-int					put_piece(t_tet **tetriminoes, char *board);
 
-int					check_position(char *piece, char *board, int call);
-char    			*trim_edge(char *input, int size);
-char				*move_piece(t_tet *tmp);
-char    			*create_board(int size);
+char				*trim_edge(char *input, int size);
+char				*create_board(int size);
+
+
+char				*put_piece(char *piece, char *board);
+int					check_position(char *piece, char *board, int idx);
+char				*move_piece(t_tet *tmp, int size, int mc);
+void				revert_board(char *board, t_tet *tet, int size);
+char				*insert_edge(char *input, int size);
+void				enlarge_piece(t_tet **tetriminoes, int size);
+char				*change_alpha(char *board, char *piece, int idx);
+void				print_alpha(t_tet *tet, char *board, int size);
+
+char				*check_x(char *piece, char *x_axis, int size);
+char				*check_y(char *piece, char *y_axis, int size);
+int					validate_xshape(char *piece, char *moved, int size);
+int					validate_yshape(char *piece, char *moved, int size);
 
 #endif

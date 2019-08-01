@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 02:19:53 by sapark            #+#    #+#             */
+/*   Updated: 2019/07/29 02:19:56 by sapark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 void	print_error(void)
@@ -23,7 +35,6 @@ void	read_file(int fd, t_tet **head)
 			cnt = 0;
 			tet = validate_tetriminoes(input);
 			insertNode(head, tet);
-			//two_dprint(tet);
 			ft_memset(input, '\0', 17);
 		}
 		free(line);
@@ -31,9 +42,8 @@ void	read_file(int fd, t_tet **head)
 	}
 	if (cnt == 4 && ft_strlen(input) == 16)
 	{
-        tet = validate_tetriminoes(input);
+		tet = validate_tetriminoes(input);
 		insertNode(head, tet);
-		//two_dprint(tet);
 		ft_memset(input, '\0', 17);
 	}
 	else
