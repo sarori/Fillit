@@ -56,11 +56,21 @@ int		calculate_size(t_tet **tetriminoes)
 			hei_max = tmp->height;
 		tmp = tmp->next;
 	}
+<<<<<<< HEAD
 	size = hei_max >= wid_max ? hei_max : wid_max;
 	if (size == 2 && cnt > 1)
 		size = 4;
 	else if (n == 2)
 		size = hei_max >= wid_max ? hei_max : wid_max;
+=======
+    (*tetriminoes)->size = (hei_max >= wid_max ? hei_max : wid_max);
+	return (hei_max >= wid_max ? hei_max : wid_max);
+}
+
+int     calculate_length(char *input)
+{
+    int len;
+>>>>>>> 9a83fdd7ba0bcbe08a634b5cbd6df28c10571e18
 
 	// else if (n > 4)
 	// 	size = n;
