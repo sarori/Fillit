@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:17:06 by sapark            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/08/03 18:44:21 by sapark           ###   ########.fr       */
-=======
-/*   Updated: 2019/07/27 23:44:34 by hnam             ###   ########.fr       */
->>>>>>> 9a83fdd7ba0bcbe08a634b5cbd6df28c10571e18
+/*   Updated: 2019/08/03 18:59:43 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +23,6 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	read_file(fd, &head);
-<<<<<<< HEAD
 	/*head->size = calculate_size(&head);	head에만 initialize해서 두번째꺼부터 쓰레기값 들어가있다. */
 	size = calculate_size(&head);
 	if (size >= 5)
@@ -51,48 +46,6 @@ int main(int argc, char **argv)
 	clear_lst(&head);
 	while (1)
 		sleep(1);
-=======
-
-	// printf("%s\n", head->input);
-	// for(int i = 0; i < 6; i++)
-	// {
-	// 	print_tetriminoes(move_piece(head, 4, i), 4);
-	// 	printf("\n");
-	// }
-	// sort_input_cases(&head);
-	// put_piece(print_tetriminoes, board);
-	// return (0);
-	// t_tet *tmp = head;
-	// while (tmp)
-	// {
-	// 	printf("[width] : %d\n", tmp->width);
-	// 	printf("[height] : %d\n", tmp->height);
-	// 	printf("[input] : %s\n", tmp->input);
-	// 	// printf("[idx] : %d\n", head->idx);
-	// 	// printf("[mc] : %d\n", head->mc);
-	// 	printf("\n");
-	// 	tmp = tmp->next;
-	// }
-
-	board = sort_input_cases(&head);
-	// while (head)
-	// {
-	// 	printf("[input] : %s\n\n", head->input);
-	// 	head = head->next;
-	// }
-	// return (0);
-	if (fillit(head, board) == YES)
-		return (print_tetriminoes(board, head->size));
-	else
-	{
-		printf("need to be bigger\n");
-		// reset_value(tetriminoes);
-		return (0);
-		// return (put_piece(head, board));
-	}
-
-	//ft_strdel(&board);
->>>>>>> 9a83fdd7ba0bcbe08a634b5cbd6df28c10571e18
 	return (0);
 }
 
@@ -142,7 +95,6 @@ void	revert_board(char *board, char *tmp)
 {
 	int		i;
 
-<<<<<<< HEAD
 	i = -1;
 	while (tmp[++i])
 	{
@@ -150,6 +102,3 @@ void	revert_board(char *board, char *tmp)
 			board[i] = '.';
 	}
 }
-=======
-// }
->>>>>>> 9a83fdd7ba0bcbe08a634b5cbd6df28c10571e18
