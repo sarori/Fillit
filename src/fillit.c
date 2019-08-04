@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:17:06 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 22:25:44 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/04 01:23:59 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int main(int argc, char **argv)
 	ft_strdel(&board);
 	clear_lst(&head);
 	close(fd);
-	while (1)
-		sleep(1);
+	// while (1)
+	// 	sleep(1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 22:17:02 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/04 01:10:35 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void				store_data(char *input);
 void				insertNode(t_tet **target, char *input);
 int					calculate_size(t_tet **tetriminoes);
 
-int					print_tetriminoes(char *board, int	size);
+// int					print_tetriminoes(char *board, int	size);
 int					count_piece(t_tet **tetriminoes);
 void				possible_mc(t_tet **tetriminoes, int size);
 char				*ft_countmove(char *dst, int move_cnt);

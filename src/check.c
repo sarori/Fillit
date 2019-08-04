@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 18:30:51 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:39:06 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/04 01:11:47 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		validate_xshape(char *piece, char *moved, int size)
 	tmp2 = ft_strtrimby(moved_x, '0');	/*여기서도 malloc하므로 free 해결해야한다. */
 	ft_strdel(&original_x);
 	ft_strdel(&moved_x);
-	valid = strcmp(tmp1, tmp2);
+	valid = ft_strcmp(tmp1, tmp2);
 	ft_strdel(&tmp1);
 	ft_strdel(&tmp2);
 	return (valid == 0 ? 1 : 0);
@@ -100,7 +100,7 @@ int		validate_yshape(char *piece, char *moved, int size)
 	tmp2 = ft_strtrimby(moved_y, '0');	/*여기서도 malloc하므로 free 해결해야한다. */
 	ft_strdel(&original_y);
 	ft_strdel(&moved_y);
-	valid = strcmp(tmp1, tmp2);
+	valid = ft_strcmp(tmp1, tmp2);
 	ft_strdel(&tmp1);
 	ft_strdel(&tmp2);
 	return (valid == 0 ? 1 : 0);

@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 19:48:35 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 22:29:56 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/04 01:06:12 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	clear_lst(t_tet **tetriminoes)
 		mc = -1;
 		while (++mc < (*tetriminoes)->pmc)
 			ft_strdel(&(*tetriminoes)->p_set[mc]);
-		ft_strdel((*tetriminoes)->p_set);
+		free((*tetriminoes)->p_set);
 		ft_strdel(&(*tetriminoes)->input);
 		// free(*tetriminoes);
 		tmp = (*tetriminoes);
@@ -39,9 +39,9 @@ void	clear_valid_set(t_tet *tetriminoes)
 	while (tetriminoes)
 	{
 		mc = -1;
-		while (tetriminoes->p_set[++mc])
+		while (++mc < tetriminoes->pmc)
 			ft_strdel(&(tetriminoes->p_set[mc]));
-		ft_strdel(tetriminoes->p_set);
+		free(tetriminoes->p_set);
 		(tetriminoes) = (tetriminoes)->next;
 	}	
 }
