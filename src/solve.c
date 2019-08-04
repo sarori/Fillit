@@ -6,39 +6,35 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:20:02 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/02 23:54:05 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 18:40:54 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*trim_edge(char *input, int size)
+void	make_valid_set(t_tet *tmp, int size)
 {
-	int		i;
-	int		j;
-	int		total_size;
-	char	*piece;
-	// char	*tmp;
-		
-	i = 0;
-	j = 0;
-	total_size = size * size;
-	piece = ft_memalloc(total_size + 1);
-	while (total_size > i)
+	char	*moved;
+	char	*temp;
+	int		mc;
+
+	while (tmp)
 	{
-		if ((i % size == size - 1) || (i / size == size - 1))
-			i++;
-		else
+		if (!(tmp->p_set = (char **)malloc((tmp->pmc + 1) * sizeof(char *))))
+			return ;
+		moved = ft_strdup(tmp->input);
+		tmp->p_set[0] = ft_strdup(moved);/*첫번째는 따로 넣어줘야 한다. */
+		mc = 1;
+		while (count_hash(moved) == 4)
 		{
-			piece[j] = input[i];
-			i++;
-			j++;
+			temp = ft_countmove(moved, 1);
+			free(moved);
+			moved = temp;
+			if (validate_xshape(tmp->input, moved, size) == 1
+			&& validate_yshape(tmp->input, moved, size) == 1)
+				tmp->p_set[mc++] = ft_strdup(moved);
 		}
+		tmp->p_set[tmp->pmc] = "\0";/*'\0'넣어야하고 char *형이니까 " "로 넣어야한다.  */
+		tmp = tmp->next;
 	}
-	// tmp = piece;
-	// ft_strdel(&piece);
-	// piece = tmp;
-	// ft_strdel(&tmp);
-	return (piece);
-	//piece free
 }

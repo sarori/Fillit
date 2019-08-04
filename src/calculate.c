@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:17:33 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/02 23:59:57 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 18:15:26 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,6 @@ int		count_piece(t_tet **tetriminoes)
 	}
 	return (cnt);
 }
-
-
-int		same_piece(t_tet **tetriminoes, int size)
-{
-	t_tet	*tmp;
-	// char	*original;
-
-	tmp = (*tetriminoes);
-	// original = *tetriminoes->input;
-	while (tmp)
-	{
-		if (validate_xshape(tmp->input, (tmp->next)->input, size) == 0 || validate_yshape(tmp->input, (tmp->next)->input, size) == 0)
-		// if (validate_xshape(tmp->input, (tmp->next)->input, size) == 0) || (validate_yshape(tmp->input, (tmp->next)->input, size) == 0))
-			return (0);
-
-		// if (validate_xshape(tmp->input) != validate_xshape((tmp->next)->input)
-		// 	|| validate_xshape(tmp->input) != validate_xshape(tmp->next)->input))
-		// 	return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
 
 int		calculate_size(t_tet **tetriminoes) 
 {

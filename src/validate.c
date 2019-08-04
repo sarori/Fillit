@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:20:17 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/02 23:57:40 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 18:40:53 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int		binary_conversion(char *input)
 	return (sum);
 }
 
-/*반환형 뭘로 할지 */
 char	*validate_tetriminoes(char *input)
 {
 	int			i;

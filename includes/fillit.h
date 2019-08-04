@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 12:16:32 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 18:15:51 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char				*create_board(int size);
 char				*put_piece(char *piece, char *board);
 int					check_position(char *piece, char *board, int idx);
 char				*move_piece(t_tet *tmp, int size);
-// void				revert_board(char *board, char **tmp, int mc);
 void				revert_board(char *board, char *tmp);
 char				*change_alpha(char *board, char *piece, int idx);
 void				print_alpha(t_tet *tet, char *board, int size);
@@ -89,9 +88,7 @@ int					validate_yshape(char *piece, char *moved, int size);
 
 char				*insert_edge(char *input, int size, int len);
 void				enlarge_piece(t_tet **tetriminoes, int size, int len);
-int					same_piece(t_tet **tetriminoes, int size);
 void				clear_lst(t_tet **tetriminoes);
-void				clear_input(t_tet **tetriminoes);
 void				make_valid_set(t_tet *tmp, int size);
 
 

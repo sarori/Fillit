@@ -6,17 +6,11 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:19:53 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/02 23:04:19 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 18:32:00 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	print_error(void)
-{
-	write(1, "error\n", 6);
-	exit(0);
-}
 
 void	read_file(int fd, t_tet **head)
 {

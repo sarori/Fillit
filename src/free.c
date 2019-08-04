@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 19:48:35 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/02 23:55:39 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 18:44:32 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	clear_lst(t_tet **tetriminoes)
 
 	while (*tetriminoes)
 	{
+		// VALID_SET FREE
 		ft_strdel(&(*tetriminoes)->input);
 		// free(*tetriminoes);
 		tmp = (*tetriminoes);
