@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 14:40:07 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/29 02:11:43 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 12:23:06 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	insertNode(t_tet **target, char *input)
 	tmp = (*target);
 	newNode->width = count_width(input, 4);
 	newNode->height = count_height(input, 4);
-	newNode->length = calculate_length(input);
 	newNode->idx = i++;	/*piece는 0번째부터 시작하고 몇번째까지 있는지 알려준다 */
 	newNode->mc = 0;
 	newNode->input = ft_strdup(input);

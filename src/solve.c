@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:20:02 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/29 02:30:57 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/02 23:54:05 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*trim_edge(char *input, int size)
 	int		j;
 	int		total_size;
 	char	*piece;
+	// char	*tmp;
 		
 	i = 0;
 	j = 0;
@@ -34,30 +35,10 @@ char	*trim_edge(char *input, int size)
 			j++;
 		}
 	}
+	// tmp = piece;
+	// ft_strdel(&piece);
+	// piece = tmp;
+	// ft_strdel(&tmp);
 	return (piece);
 	//piece free
-}
-
-void	special_case(t_tet **tetriminoes, char *board, int size)
-{
-	t_tet	*tmp;
-	int		i;
-	int		j;
-	int		len;
-
-	i = 0;
-	j = 0;
-	tmp = (*tetriminoes);
-	len = ft_strlen(tmp->input);
-	while (len > i)
-	{
-		if ((tmp->input)[i] == '#')
-		{
-			board[j] = '#';
-			j++;
-		}
-		i++;
-	}
-	board[j] = '\0';
-	print_tetriminoes(board , size);
 }

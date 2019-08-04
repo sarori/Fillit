@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:17:33 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/31 19:36:27 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/02 23:59:57 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,29 @@ int		count_piece(t_tet **tetriminoes)
 	return (cnt);
 }
 
+
+int		same_piece(t_tet **tetriminoes, int size)
+{
+	t_tet	*tmp;
+	// char	*original;
+
+	tmp = (*tetriminoes);
+	// original = *tetriminoes->input;
+	while (tmp)
+	{
+		if (validate_xshape(tmp->input, (tmp->next)->input, size) == 0 || validate_yshape(tmp->input, (tmp->next)->input, size) == 0)
+		// if (validate_xshape(tmp->input, (tmp->next)->input, size) == 0) || (validate_yshape(tmp->input, (tmp->next)->input, size) == 0))
+			return (0);
+
+		// if (validate_xshape(tmp->input) != validate_xshape((tmp->next)->input)
+		// 	|| validate_xshape(tmp->input) != validate_xshape(tmp->next)->input))
+		// 	return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+
 int		calculate_size(t_tet **tetriminoes) 
 {
 	/* width와 height비교해서 큰 값이 n이 되게 한다.
@@ -42,13 +65,9 @@ int		calculate_size(t_tet **tetriminoes)
 
 	tmp = (*tetriminoes);
 	cnt = count_piece(tetriminoes);
-	n = 1;
+	n = 0;
 	size = 0;
-	while (ft_pow(n, 2) < cnt * 4)
-	{
-		n++;
-	}
-	printf("n : %d\n", n);
+	while (ft_pow(++n, 2) < cnt * 4)	/* piece가 다른 게 들어온다면.....저거 가능... */
 	wid_max = tmp->width;
 	hei_max = tmp->height;
 	tmp = tmp->next;	/*2번째 값부터 비교해야하므로 tmp->next를 해야한다. */
@@ -63,24 +82,20 @@ int		calculate_size(t_tet **tetriminoes)
 	size = hei_max >= wid_max ? hei_max : wid_max;
 	if (size == 2 && cnt > 1)
 		size = 4;
+	else if (n == 2)
+		size = hei_max >= wid_max ? hei_max : wid_max;
+
+	// else if (n > 4)
+	// 	size = n;
 	else if (n > 4)
-		size = 5;
-	printf("size %d\n", size);
-	return (size);
-}
-
-int		calculate_length(char *input)
-{
-	int len;
-
-	len = ft_strlen(input);
-	while (len > 0)
 	{
-		if (input[len - 1] == '#')
-			break;
-		len--;
+		// if (same_piece(tetriminoes, size) == 0 && n >= 6 && cnt >= 9)
+		// 	n++;
+		size = n;
 	}
-	return (len);
+
+	// printf("size %d\n", size);
+	return (size);
 }
 
 int		count_width(char *input, int size)

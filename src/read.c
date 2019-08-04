@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:19:53 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/29 02:19:56 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/02 23:04:19 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void	read_file(int fd, t_tet **head)
 			insertNode(head, tet);
 			ft_memset(input, '\0', 17);
 		}
-		free(line);
-		line = NULL;
+		ft_strdel(&line);
 	}
 	if (cnt == 4 && ft_strlen(input) == 16)
 	{

@@ -6,22 +6,32 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:18:23 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/31 17:36:25 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 17:41:11 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*sort_input_cases(t_tet **tetriminoes, int size)
+void	sort_input_cases(t_tet **tetriminoes, int size)
 {
 	t_tet	*tmp;
 
 	tmp = (*tetriminoes);
 	possible_mc(tetriminoes, size);
-	if (size == 3)
+	if (size == 2)
+	{
+		ft_putstr(SPECIAL_CASE);
+		exit(0);
+	}
+	else if (size == 3)
 		change_input_shape(tetriminoes, size);
-	// create_board(tmp->size);
-	return (create_board(size));
+	// else if (size >= 5)
+	// 	enlarge_piece(tetriminoes, size, size - 4);
+	// while (tmp)
+	// {
+	// 	printf("input : %s\n", tmp->input);
+	// 	tmp = tmp->next;
+	// }
 }
 
 char	*create_board(int size)
@@ -37,31 +47,37 @@ char	*create_board(int size)
 void	change_input_shape(t_tet **tetriminoes, int size)
 {
 	t_tet	*tmp;
+	char	*tmp_piece;
 
 	tmp = (*tetriminoes);
 	if (size == 3)
 	{
 		while (tmp)
 		{
-			tmp->input = trim_edge(tmp->input, DEFAULT_SIZE);
+			tmp_piece = trim_edge(tmp->input, DEFAULT_SIZE);
+			free(tmp->input);
+			tmp->input = tmp_piece;
 			tmp = tmp->next;
 		}
 	}
 }
 
-void	enlarge_piece(t_tet **tetriminoes, int size)
+void	enlarge_piece(t_tet **tetriminoes, int size, int len)
 {
 	t_tet	*tmp;
+	char	*tmp_piece;
 
 	tmp = (*tetriminoes);
 	while (tmp)
 	{
-		tmp->input = insert_edge(tmp->input, size);
+		tmp_piece = insert_edge(tmp->input, size, len);
+		free(tmp->input);
+		tmp->input = tmp_piece;
 		tmp = tmp->next;
 	}
 }
 
-char	*insert_edge(char *input, int size)
+char	*insert_edge(char *input, int size, int len)
 {
 	int		i;
 	int		j;
@@ -75,61 +91,90 @@ char	*insert_edge(char *input, int size)
 	piece[total_size] = '\0';
 	while (total_size > i)
 	{
-		if ((i % size == size - 1) || (i / size == size - 1))
-		{
-			piece[i] = '.';
-			i++;
-		}
+		if ((i % size >= size - len && i % size <= size - 1)
+			|| (i / size >= size - len && i / size <= size - 1))
+			piece[i++] = '.';
 		else
-		{
-			piece[i] = input[j];
-			i++;
-			j++;
-		}
+			piece[i++] = input[j++];
 	}
 	return (piece);
 	//piece free
 }
 
+// void	enlarge_piece(t_tet **tetriminoes, int size)
+// {
+// 	t_tet	*tmp;
+
+// 	tmp = (*tetriminoes);
+// 	while (tmp)
+// 	{
+// 		tmp->input = insert_edge(tmp->input, size);
+// 		tmp = tmp->next;
+// 	}
+// }
+
+// char	*insert_edge(char *input, int size)
+// {
+// 	int		i;
+// 	int		j;
+// 	int		total_size;
+// 	char	*piece;
+
+// 	i = 0;
+// 	j = 0;
+// 	total_size = size * size;
+// 	piece = ft_memalloc(total_size + 1);
+// 	piece[total_size] = '\0';
+// 	while (total_size > i)
+// 	{
+// 		if ((i % size == size - 1) || (i / size == size - 1))
+// 		{
+// 			piece[i] = '.';
+// 			i++;
+// 		}
+// 		else
+// 		{
+// 			piece[i] = input[j];
+// 			i++;
+// 			j++;
+// 		}
+// 	}
+// 	return (piece);
+// 	//piece free
+// }
+
 int		fillit(t_tet *tet, char *board, int size)
 {
-	char	*tmp;
-	int		mc;
-
+	int	mc;
+	
 	mc = 0;
-	if (tet == NULL)	/*더이상 체크할 게 없을 경우 */
-		return (YES);
 	while (tet && mc < tet->pmc)
 	{
-		tmp = move_piece(tet, size, mc);	/*3이나 다른 크기에도 할 수 있어야함. */
-		// printf("idx : %d, pmc : %d, mc : %d, tmp : %s\n", tet->idx, tet->pmc, mc, tmp);
-		if (check_position(tmp, board, tet->idx))
+		// tmp[mc] = move_piece(tet, size, mc);	/*3이나 다른 크기에도 할 수 있어야함. */
+		if (check_position(tet->p_set[mc], board, tet->idx))
 		{
-			board = put_piece(tmp, board);
-			// printf("[%d] tet\n", tet->idx);
-
-			// print_tetriminoes(tmp, size);
-			// printf("%d x %d size board\n",size,size);
+			board = put_piece(tet->p_set[mc], board);
+			tet->mc = mc;
+			// printf("idx : %d, %s\n", tet->p_set[tet->mc]);
+			// print_tetriminoes(tet->p_set[tet->mc], size);
+			// printf("\n");
+			// printf("board\n");
 			// print_tetriminoes(board, size);
-			// printf("\n\n");
-			tet->mc = mc;	/*마지막 mc값만 기억함 */
+			// printf("\n");
 			if (fillit(tet->next, board, size))
-			{
-				free(tmp);
 				return (YES);
-			}
 			else
 			{
-				revert_board(board, tet, size);
-				mc += 1;
-				tet->mc = -1;	/*tet=->mc는 최종 확정 될때만 넣기 */
+				revert_board(board, tet->p_set[tet->mc]);
+				mc++;
+				tet->mc = 0;
+				// tet->mc = 0;	/*tet=->mc는 최종 확정 될때만 넣기 */
 			}
 		}
 		else
-			mc += 1;
-		free(tmp);
+			mc++;;
 	}
-	return (0);
+	return (tet == NULL);/*더이상 체크할 게 없을 경우 */
 }
 
 int		check_position(char *piece, char *board, int idx)
@@ -269,32 +314,47 @@ int		validate_yshape(char *piece, char *moved, int size)
 	return (valid == 0 ? 1 : 0);
 }
 
-
-char	*move_piece(t_tet *tmp, int size, int cnt)
+void	make_valid_set(t_tet *tmp, int size)
 {
 	char	*moved;
 	char	*temp;
+	int		mc;
 
-	moved = ft_strdup(tmp->input);
-	while (count_hash(moved) == 4)
+	while (tmp)
 	{
-		// if (count_width(moved, size) == tmp->width
-		// 	&& count_height(moved, size) == tmp->height && cnt == 0)
-		// 	return (moved);
-		if (validate_xshape(tmp->input, moved, size) == 1 && validate_yshape(tmp->input, moved, size) == 1 && cnt == 0)
-			return (moved);
-		else
+		if (!(tmp->p_set = (char **)malloc((tmp->pmc + 1) * sizeof(char *))))
+			return ;
+		moved = ft_strdup(tmp->input);
+		tmp->p_set[0] = ft_strdup(moved);/*첫번째는 따로 넣어줘야 한다. */
+		mc = 1;
+		while (count_hash(moved) == 4)
 		{
 			temp = ft_countmove(moved, 1);
 			free(moved);
-			moved = ft_strdup(temp);
-			free(temp);
+			moved = temp;
 			if (validate_xshape(tmp->input, moved, size) == 1 && validate_yshape(tmp->input, moved, size) == 1)
-				cnt--;
+				tmp->p_set[mc++] = ft_strdup(moved);
 		}
+		tmp->p_set[tmp->pmc] = "\0";/*'\0'넣어야하고 char *형이니까 " "로 넣어야한다.  */
+		tmp = tmp->next;
 	}
-	return (NULL);
 }
+// char	*move_piece(t_tet *tmp, int size)
+// {
+// 	char	*moved;
+// 	char	*temp;
+
+// 	moved = ft_strdup(tmp->input);
+// 	while (count_hash(moved) == 4)
+// 	{
+// 		temp = ft_countmove(moved, 1);
+// 		free(moved);
+// 		moved = temp;
+// 		if (validate_xshape(tmp->input, moved, size) == 1 && validate_yshape(tmp->input, moved, size) == 1)
+// 			return (moved);
+// 	}
+// 	return (NULL);
+// }
 
 char	*ft_countmove(char *dst, int move_cnt)
 {
@@ -317,16 +377,17 @@ char	*ft_countmove(char *dst, int move_cnt)
 	return (tmp);
 }
 
-void	revert_board(char *board, t_tet *tet, int size)
+void	revert_board(char *board, char *tmp)
 {
 	int		i;
-	char	*moved;
+	// char	*moved;
 
 	i = -1;
-	moved = move_piece(tet, size, tet->mc);
-	while (moved[++i])
+	// moved = move_piece(tet, size, tet->mc);
+	// moved = tmp[mc];
+	while (tmp[++i])
 	{
-		if (moved[i] == '#')
+		if (tmp[i] == '#')
 			board[i] = '.';
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:19:26 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/31 17:52:38 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 11:35:37 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ int		print_tetriminoes(char *board, int size)
 
 void	print_alpha(t_tet *tet, char *board, int size)
 {
-	char	*tmp;
 	int		i;
 
+	i = 0;
 	while (tet)
 	{
-		tmp = move_piece(tet, size, tet->mc);
-		board = change_alpha(board, tmp, tet->idx);
+		board = change_alpha(board, tet->p_set[tet->mc], tet->idx);
 		tet = tet->next;
 	}
-	i = 0;
 	while (board[i] != '\0')
 	{
 		ft_putchar(board[i]);
