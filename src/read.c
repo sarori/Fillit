@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:19:53 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:32:00 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 22:20:28 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	read_file(int fd, t_tet **head)
 	{
 		tet = validate_tetriminoes(input);
 		insertNode(head, tet);
-		ft_memset(input, '\0', 17);
 	}
 	else
 		print_error();

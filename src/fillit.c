@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:17:06 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:59:43 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 22:25:44 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 			break ;
 		else
 		{
-			// VALID SET FREE
+			clear_valid_set(head);
 			ft_strdel(&board);	/*커질때 이전 보드 필요없고 새로만드니까 free해야한다. */
 			enlarge_piece(&head, ++size, 1);
 		}
@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 	print_alpha(head, board, size);
 	ft_strdel(&board);
 	clear_lst(&head);
+	close(fd);
 	while (1)
 		sleep(1);
 	return (0);

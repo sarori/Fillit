@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:20:02 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:40:54 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/04 00:20:19 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	make_valid_set(t_tet *tmp, int size)
 			&& validate_yshape(tmp->input, moved, size) == 1)
 				tmp->p_set[mc++] = ft_strdup(moved);
 		}
+		ft_strdel(&moved);
 		tmp->p_set[tmp->pmc] = "\0";/*'\0'넣어야하고 char *형이니까 " "로 넣어야한다.  */
 		tmp = tmp->next;
 	}

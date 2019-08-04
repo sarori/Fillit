@@ -6,14 +6,15 @@
 #    By: sapark <sapark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/24 17:01:45 by sapark            #+#    #+#              #
-#    Updated: 2019/06/24 20:25:34 by sapark           ###   ########.fr        #
+#    Updated: 2019/08/03 19:11:26 by sapark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC=$(wildcard src/*.c)
-CC=gcc -g -fsanitize=address
+CC=gcc
+#  -g -fsanitize=address
 # CC=gcc list.c -g -fsanitize=address
 CFLAGS=-Wall -Wextra -Werror -Iincludes
 OBJ = $(patsubst %.c, %.o, $(SRC))

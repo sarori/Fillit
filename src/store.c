@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 14:40:07 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:57:22 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 22:25:26 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	insertNode(t_tet **target, char *input)
 	/*문자열을 list에 넣을 때에는 바로 넣을 수 없고 문final_list.c자열 크기만큼 malloc을 해야함, free는 마지막에 하기 */
 	newNode->next = NULL;
 	if (!tmp)
-	{
 		(*target) = newNode;
-	}
 	else
 	{
 		while(tmp->next)

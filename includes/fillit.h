@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:59:21 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 22:17:02 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@
 typedef struct		s_tet
 {
 	char			*input;
-	char			*left;/*piece의 모양 기억할 변수 */
-	char			*tmp_piece;/*이동할 변수 */
 	char			**p_set;
 
 	int				size;
@@ -91,5 +89,6 @@ void				enlarge_piece(t_tet **tetriminoes, int size, int len);
 void				clear_lst(t_tet **tetriminoes);
 void				make_valid_set(t_tet *tmp, int size);
 
+void				clear_valid_set(t_tet *tetriminoes);
 
 #endif

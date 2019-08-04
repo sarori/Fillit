@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:17:33 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 19:00:58 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/03 22:44:45 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,7 @@ int		calculate_size(t_tet **tetriminoes)
 	// else if (n > 4)
 	// 	size = n;
 	else if (n > 4)
-	{
-		// if (same_piece(tetriminoes, size) == 0 && n >= 6 && cnt >= 9)
-		// 	n++;
 		size = n;
-	}
-
-	// printf("size %d\n", size);
 	return (size);
 }
 
