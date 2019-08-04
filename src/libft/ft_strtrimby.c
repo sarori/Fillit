@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strtrimby.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 13:51:42 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/29 20:47:22 by sapark           ###   ########.fr       */
+/*   Created: 2019/07/31 00:17:16 by sapark            #+#    #+#             */
+/*   Updated: 2019/07/31 01:00:43 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strtrimby(char const *s, char c)
 {
-	unsigned int	n;
-	int				i;
+	unsigned int	len;
+	unsigned int	i;
 
+	while (!s)
+		return (NULL);
 	i = 0;
-	n = ft_strlen(src);
-	if (n < len)
-	{
-		while (src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		while (len - i > 0)
-		{
-			dst[i] = '\0';
-			i++;
-		}
-	}
-	else
-		while (len-- > 0)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-	return (dst);
+	len = ft_strlen(s);
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t' || s[i] == c)
+		i++;
+	while (i < len && (s[len - 1] == ' '
+		|| s[len - 1] == '\n' || s[len - 1] == '\t' || s[len - 1] == c))
+		len--;
+	return (ft_strsub(s, i, len - i));
 }

@@ -1,23 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 02:17:53 by sapark            #+#    #+#             */
+/*   Updated: 2019/08/03 18:08:44 by sapark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-void	two_dprint(char *arr)
+int		print_tetriminoes(char *board, int size)
 {
 	int	i;
-	int	len;
 
 	i = 0;
-	len = ft_strlen(arr);
-	while (len > i)
+	while ((size * size) > i)
 	{
-		if (i % 4 == 3)
-		{
-			printf("%c", arr[i]);
-			printf("\n");
-		}	
+		if (i % size == size - 1)
+			printf("%c\n", board[i]);
 		else
-		{
-			printf("%c", arr[i]);
-		}
+			printf("%c", board[i]);
 		i++;
 	}
+	return (1);
 }

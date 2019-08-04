@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 13:51:42 by sapark            #+#    #+#             */
-/*   Updated: 2019/07/29 20:47:22 by sapark           ###   ########.fr       */
+/*   Created: 2019/08/02 19:48:35 by sapark            #+#    #+#             */
+/*   Updated: 2019/08/03 18:44:32 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+void	clear_lst(t_tet **tetriminoes)
 {
-	unsigned int	n;
-	int				i;
+	t_tet	*tmp;
 
-	i = 0;
-	n = ft_strlen(src);
-	if (n < len)
+	while (*tetriminoes)
 	{
-		while (src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		while (len - i > 0)
-		{
-			dst[i] = '\0';
-			i++;
-		}
+		// VALID_SET FREE
+		ft_strdel(&(*tetriminoes)->input);
+		// free(*tetriminoes);
+		tmp = (*tetriminoes);
+		(*tetriminoes) = (*tetriminoes)->next;
+		free(tmp);
 	}
-	else
-		while (len-- > 0)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-	return (dst);
 }

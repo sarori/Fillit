@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/29 02:20:17 by sapark            #+#    #+#             */
+/*   Updated: 2019/08/03 18:40:53 by sapark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-void		check_condition(char *input)
+void	check_condition(char *input)
 {
 	int		i;
 	int		hashcnt;
@@ -17,10 +29,7 @@ void		check_condition(char *input)
 			dotcnt++;
 	}
 	if 	(hashcnt != 4 || dotcnt != 12)
-	{
-		write(1, "error\n", 6);
-		exit(0);
-	}
+		print_error();
 }
 
 int		binary_conversion(char *input)
@@ -41,24 +50,27 @@ int		binary_conversion(char *input)
 		power = power * 2;
 		len--;
 	}
-	printf("sum : %d\n", sum);
 	return (sum);
 }
 
-int		validate_tetriminoes(char *input)
+char	*validate_tetriminoes(char *input)
 {
-	int	i;
-	int	sum;
+	int			i;
+	int			sum;
+	char		*tet;
 	static int valid_input[19] = {34952, 61440, 52224, 35008, 11776, 50240,
 							19968, 19520, 35968, 58368, 50688, 19584, 27648,
 							35904, 17600, 57856, 51328, 36352, 59392};
 
 	i = 0;
-	sum = binary_conversion(input);
+	tet = transform_character(input);
+	while (tet && ft_strlen(tet) < 16)
+		ft_strcat(tet, ".");
+	sum = binary_conversion(tet);
 	while (i < 19)
 	{
 		if (valid_input[i] == sum)
-			return (1);
+			return (tet);
 		i++;
 	}
 	write(1, "error\n", 6);
