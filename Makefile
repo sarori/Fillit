@@ -6,7 +6,7 @@
 #    By: sapark <sapark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/24 17:01:45 by sapark            #+#    #+#              #
-#    Updated: 2019/08/03 19:11:26 by sapark           ###   ########.fr        #
+#    Updated: 2019/08/05 20:09:56 by sapark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ clean:
 
 fclean: clean
 	-cd src/libft && make fclean
-	-rm -f $(NAME) 
+	-rm -f $(NAME)
 	-rm -f libft.a
 
 re: fclean $(NAME)
