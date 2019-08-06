@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:17:33 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 22:44:45 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/04 20:31:19 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		calculate_size(t_tet **tetriminoes)
 	cnt = count_piece(tetriminoes);
 	n = 0;
 	size = 0;
-	while (ft_pow(++n, 2) < cnt * 4)	/* piece가 다른 게 들어온다면.....저거 가능... */
+	while (ft_pow(++n, 2) < cnt * 4)
 	wid_max = tmp->width;
 	hei_max = tmp->height;
 	tmp = tmp->next;	/*2번째 값부터 비교해야하므로 tmp->next를 해야한다. */
@@ -59,15 +59,51 @@ int		calculate_size(t_tet **tetriminoes)
 	size = hei_max >= wid_max ? hei_max : wid_max;
 	if (size == 2 && cnt > 1)
 		size = 4;
-	else if (n == 2)
-		size = hei_max >= wid_max ? hei_max : wid_max;
-
-	// else if (n > 4)
-	// 	size = n;
+	// else if (n == 2)
+	// 	size = hei_max >= wid_max ? hei_max : wid_max;
 	else if (n > 4)
 		size = n;
 	return (size);
 }
+
+// int		calculate_size(t_tet **tetriminoes) 
+// {
+// 	/* width와 height비교해서 큰 값이 n이 되게 한다.
+// 	tetriminoes->width
+// 	tetriminoes->height
+// 	*/
+// 	t_tet	*tmp;
+// 	int		cnt;
+// 	int		wid_max;
+// 	int		hei_max;
+// 	int		n;
+// 	int		size;
+
+// 	tmp = (*tetriminoes);
+// 	cnt = count_piece(tetriminoes);
+// 	n = 0;
+// 	size = 0;
+// 	while (ft_pow(++n, 2) < cnt * 4)
+// 	wid_max = tmp->width;
+// 	hei_max = tmp->height;
+// 	tmp = tmp->next;	/*2번째 값부터 비교해야하므로 tmp->next를 해야한다. */
+// 	while (tmp)
+// 	{
+// 		if (wid_max < tmp->width)
+// 			wid_max = tmp->width;
+// 		if (hei_max < tmp->height)
+// 			hei_max = tmp->height;
+// 		tmp = tmp->next;
+// 	}
+// 	size = hei_max >= wid_max ? hei_max : wid_max;
+// 	if (size == 2 && cnt > 1)
+// 		size = 4;
+// 	// else if (n == 2)
+// 	// 	size = hei_max >= wid_max ? hei_max : wid_max;
+// 	else if (n > 4)
+// 		size = n;
+// 	return (size);
+// }
 
 int		count_width(char *input, int size)
 {
