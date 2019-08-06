@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:20:02 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/04 00:20:19 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:54:26 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	make_valid_set(t_tet *tmp, int size)
 		if (!(tmp->p_set = (char **)malloc((tmp->pmc + 1) * sizeof(char *))))
 			return ;
 		moved = ft_strdup(tmp->input);
-		tmp->p_set[0] = ft_strdup(moved);/*첫번째는 따로 넣어줘야 한다. */
+		tmp->p_set[0] = ft_strdup(moved);
 		mc = 1;
 		while (count_hash(moved) == 4)
 		{
@@ -35,7 +35,33 @@ void	make_valid_set(t_tet *tmp, int size)
 				tmp->p_set[mc++] = ft_strdup(moved);
 		}
 		ft_strdel(&moved);
-		tmp->p_set[tmp->pmc] = "\0";/*'\0'넣어야하고 char *형이니까 " "로 넣어야한다.  */
+		tmp->p_set[tmp->pmc] = "\0";
 		tmp = tmp->next;
 	}
+}
+
+void	play_tetrimino(t_tet **tetriminoes, int size)
+{
+	t_tet	*tmp;
+	char	*board;
+
+	tmp = (*tetriminoes);
+	if (size >= 5)
+		enlarge_piece(tetriminoes, size, size - 4);
+	while (1)
+	{
+		sort_input_cases(tetriminoes, size);
+		board = create_board(size);
+		make_valid_set(tmp, size);
+		if (fillit(tmp, board, size) == YES)
+			break ;
+		else
+		{
+			clear_valid_set(tmp);
+			ft_strdel(&board);
+			enlarge_piece(tetriminoes, ++size, 1);
+		}
+	}
+	print_alpha(tmp, board, size);
+	ft_strdel(&board);
 }

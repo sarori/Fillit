@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 18:30:51 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/04 01:11:47 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:45:55 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		validate_xshape(char *piece, char *moved, int size)
 	original_x = check_x(piece, original_x, size);
 	moved_x = check_x(moved, moved_x, size);
 	tmp1 = ft_strtrimby(original_x, '0');
-	tmp2 = ft_strtrimby(moved_x, '0');	/*여기서도 malloc하므로 free 해결해야한다. */
+	tmp2 = ft_strtrimby(moved_x, '0');
 	ft_strdel(&original_x);
 	ft_strdel(&moved_x);
 	valid = ft_strcmp(tmp1, tmp2);
@@ -97,7 +97,7 @@ int		validate_yshape(char *piece, char *moved, int size)
 	original_y = check_y(piece, original_y, size);
 	moved_y = check_y(moved, moved_y, size);
 	tmp1 = ft_strtrimby(original_y, '0');
-	tmp2 = ft_strtrimby(moved_y, '0');	/*여기서도 malloc하므로 free 해결해야한다. */
+	tmp2 = ft_strtrimby(moved_y, '0');
 	ft_strdel(&original_y);
 	ft_strdel(&moved_y);
 	valid = ft_strcmp(tmp1, tmp2);
@@ -119,6 +119,6 @@ int		check_position(char *piece, char *board, int idx)
 			cnt++;
 	}
 	if (cnt == (idx + 1) * DEFAULT_SIZE)
-		return (YES);		/*overlap 되지 않을때 = 적합한 위치일 때 */
+		return (YES);
 	return (NO);
 }

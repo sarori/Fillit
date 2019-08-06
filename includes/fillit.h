@@ -6,20 +6,17 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/04 20:20:54 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:49:32 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 # include "libft.h"
-# include <fcntl.h>/* open -> O_WRONLY */
-# include <unistd.h>/* write(), read(), close()*/ 
-# include <stdlib.h>/*malloc */
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-//
-#include <stdio.h>
-//
 # define DEFAULT_SIZE 4
 # define SPECIAL_CASE "AA\nAA"
 # define YES 1
@@ -80,17 +77,19 @@ void				print_error(void);
 /*
 **	======================read===========================
 */
-void 				read_file(int fd, t_tet **head);
+void				read_file(int fd, t_tet **head);
 /*
 **	=====================solve===========================
 */
 void				make_valid_set(t_tet *tmp, int size);
+void				play_tetrimino(t_tet **tetriminoes, int size);
 /*
 **	=====================store===========================
 */
-void				insertNode(t_tet **target, char *input);
+void				insert_node(t_tet **target, char *input);
 char				*create_board(int size);
 void				possible_mc(t_tet **tetriminoes, int size);
+int					calculate_board_size(t_tet **tetriminoes);
 /*
 **	===================transform==========================
 */

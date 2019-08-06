@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 18:36:13 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 18:37:53 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:50:22 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*trim_edge(char *input, int size)
 	int		j;
 	int		total_size;
 	char	*piece;
-		
+
 	i = 0;
 	j = 0;
 	total_size = size * size;
@@ -54,7 +54,6 @@ char	*trim_edge(char *input, int size)
 	}
 	return (piece);
 }
-
 
 void	enlarge_piece(t_tet **tetriminoes, int size, int len)
 {

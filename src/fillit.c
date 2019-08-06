@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:17:06 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/05 18:18:58 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:46:13 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 int		fillit(t_tet *tet, char *board, int size)
 {
 	int	mc;
-	
+
 	mc = 0;
 	while (tet && mc < tet->pmc)
 	{
-		// tmp[mc] = move_piece(tet, size, mc);	/*3이나 다른 크기에도 할 수 있어야함. */
 		if (check_position(tet->p_set[mc], board, tet->idx))
 		{
 			board = put_piece(tet->p_set[mc], board);
@@ -30,13 +29,13 @@ int		fillit(t_tet *tet, char *board, int size)
 			{
 				revert_board(board, tet->p_set[tet->mc]);
 				mc++;
-				tet->mc = 0;/*tet=->mc는 최종 확정 될때만 넣기 */
+				tet->mc = 0;
 			}
 		}
 		else
-			mc++;;
+			mc++;
 	}
-	return (tet == NULL);/*더이상 체크할 게 없을 경우 */
+	return (tet == NULL);
 }
 
 char	*put_piece(char *piece, char *board)

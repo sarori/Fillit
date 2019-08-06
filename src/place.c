@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:18:23 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/05 18:18:58 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:47:22 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_countmove(char *dst, int move_cnt)
 	tmp = ft_strdup(dst);
 	len = ft_strlen(dst);
 	i = 0;
-	while(i < move_cnt)
+	while (i < move_cnt)
 		tmp[i++] = '.';
 	i = 0;
 	while (move_cnt < len)

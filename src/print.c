@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:19:26 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/03 22:25:19 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/05 19:47:38 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_alpha(t_tet *tet, char *board, int size)
 	while (board[i] != '\0')
 	{
 		ft_putchar(board[i]);
-		if (i % size == size -1)
+		if (i % size == size - 1)
 			ft_putchar('\n');
 		i++;
 	}
