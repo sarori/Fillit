@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 19:46:43 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/09 15:46:34 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/09 15:52:58 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 		ft_putstr("put ./fillit file name\n");
 		return (1);
 	}
-	
 	read_file(fd, &head);
 	size = calculate_board_size(&head);
 	play_tetrimino(&head, size);
