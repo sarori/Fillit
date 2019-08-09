@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 22:21:39 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/05 19:49:32 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/09 15:43:22 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 
 # define DEFAULT_SIZE 4
-# define SPECIAL_CASE "AA\nAA"
+# define SPECIAL_CASE "AA\nAA\n"
 # define YES 1
 # define NO	0
 
